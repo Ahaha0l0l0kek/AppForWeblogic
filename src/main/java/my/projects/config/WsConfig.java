@@ -3,6 +3,7 @@ package my.projects.config;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.ws.config.annotation.EnableWs;
@@ -14,19 +15,20 @@ import org.springframework.xml.xsd.XsdSchema;
 
 @EnableWs
 @Configuration
+@ComponentScan
 public class WsConfig extends WsConfigurerAdapter {
     @Bean
     public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(applicationContext);
         servlet.setTransformWsdlLocations(true);
-        return new ServletRegistrationBean(servlet, "/description");
+        return new ServletRegistrationBean(servlet, "/*");
     }
 
-    @Bean(name = "productDetailsWsdl")
+    @Bean(name = "productSOADetailsWsdl")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema schema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("ProductDetailsPort");
+        wsdl11Definition.setPortTypeName("ProductSOADetailsPort");
         wsdl11Definition.setLocationUri("/description");
         wsdl11Definition.setTargetNamespace("http://projects.my/ws");
         wsdl11Definition.setSchema(schema);

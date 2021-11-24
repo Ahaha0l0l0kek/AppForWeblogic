@@ -1,0 +1,28 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://projects.my/ws"
+           targetNamespace="http://projects.my/ws" elementFormDefault="qualified">
+
+    <xs:element name="ProductSOADetailsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="title" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ProductSOADetailsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ProductSOA" type="tns:ProductSOA"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ProductSOA">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="price" type="xs:float"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
