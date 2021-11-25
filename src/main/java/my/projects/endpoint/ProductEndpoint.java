@@ -18,7 +18,7 @@ public class ProductEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "ProductSOADetailsRequest")
     @ResponsePayload
-    public ProductSOADetailsResponse getStudent(@RequestPayload ProductSOADetailsRequest request) {
+    public ProductSOADetailsResponse getProductDetails(@RequestPayload ProductSOADetailsRequest request) {
         ProductSOADetailsResponse response = new ProductSOADetailsResponse();
         response.setProductSOA(productService.setProductSOA(request.getTitle()));
 

@@ -1,8 +1,0 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://projects.my/ws">
-    <soapenv:Header/>
-    <soapenv:Body>
-        <sch:ProductSOADetailsRequest>
-            <sch:title>sofa</sch:title>
-        </sch:ProductSOADetailsRequest>
-    </soapenv:Body>
-</soapenv:Envelope>
