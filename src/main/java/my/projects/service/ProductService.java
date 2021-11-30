@@ -1,13 +1,13 @@
 package my.projects.service;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import my.projects.model.Product;
 import my.projects.repository.ProductRepository;
 import my.projects.ws.ProductSOA;
 import org.springframework.stereotype.Service;
 
-@Log4j2
+@Slf4j
 @Service
 @AllArgsConstructor
 public class ProductService {
@@ -16,7 +16,7 @@ public class ProductService {
 
     public ProductSOA setProductSOA(String title){
         Product product = productRepository.findByTitle(title);
-        log.info(product);
+        log.info(String.valueOf(product));
         ProductSOA productSOA = new ProductSOA();
         productSOA.setId(product.getId());
         productSOA.setTitle(product.getTitle());

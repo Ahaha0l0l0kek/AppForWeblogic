@@ -1,6 +1,7 @@
 package my.projects.endpoint;
 
 import lombok.AllArgsConstructor;
+import my.projects.exception.NoProductException;
 import my.projects.service.ProductService;
 import my.projects.ws.ProductSOADetailsRequest;
 import my.projects.ws.ProductSOADetailsResponse;
@@ -19,9 +20,12 @@ public class ProductEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "ProductSOADetailsRequest")
     @ResponsePayload
     public ProductSOADetailsResponse getProductDetails(@RequestPayload ProductSOADetailsRequest request) {
-        ProductSOADetailsResponse response = new ProductSOADetailsResponse();
-        response.setProductSOA(productService.setProductSOA(request.getTitle()));
-
+        ProductSOADetailsResponse response = new ProductSOADetailsResponse();;
+        try {
+            response.setProductSOA(productService.setProductSOA(request.getTitle()));
+        } catch (NullPointerException e) {
+            throw new NoProductException();
+        }
         return response;
     }
 }
