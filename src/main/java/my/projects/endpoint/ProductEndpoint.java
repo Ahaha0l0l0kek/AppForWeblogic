@@ -20,12 +20,21 @@ public class ProductEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "ProductSOADetailsRequest")
     @ResponsePayload
     public ProductSOADetailsResponse getProductDetails(@RequestPayload ProductSOADetailsRequest request) {
-        ProductSOADetailsResponse response = new ProductSOADetailsResponse();;
+        ProductSOADetailsResponse response = new ProductSOADetailsResponse();
         try {
             response.setProductSOA(productService.setProductSOA(request.getTitle()));
         } catch (NullPointerException e) {
             throw new NoProductException();
         }
+
+
+//        ProductSOA productSOA = productService.setProductSOA(request.getTitle());
+//        if(productSOA == null) {
+//            throw new NoProductException();
+//        } else response.setProductSOA(productSOA);
+
+
+
         return response;
     }
 }

@@ -1,10 +1,12 @@
 package my.projects.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
+@JsonSerialize
 @Entity
 @Getter
 @Setter
@@ -20,13 +22,4 @@ public class Product {
 
     @Column(name = "price")
     private float price;
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", price=" + price +
-                '}';
-    }
 }
