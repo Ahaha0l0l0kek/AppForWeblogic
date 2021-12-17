@@ -1,7 +1,15 @@
 package my.projects.exception;
 
-import org.springframework.ws.soap.server.endpoint.annotation.FaultCode;
-import org.springframework.ws.soap.server.endpoint.annotation.SoapFault;
+public class NoProductException extends RuntimeException {
 
-@SoapFault(faultCode = FaultCode.SERVER, faultStringOrReason = "This product doesn't exist")
-public class NoProductException extends RuntimeException {}
+    private String title;
+
+    public NoProductException(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public String getMessage() {
+        return "Product '" + title + "' doesn't exist";
+    }
+}

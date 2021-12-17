@@ -17,6 +17,23 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="CreateProductSOARequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="title" type="xs:string"/>
+                <xs:element name="price" type="xs:float"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CreateProductSOAResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="status" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <xs:complexType name="ProductSOA">
         <xs:sequence>
             <xs:element name="id" type="xs:long"/>

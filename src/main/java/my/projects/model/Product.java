@@ -3,6 +3,7 @@ package my.projects.model;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(name = "products")
+@Document(collection = "Employee")
 public class Product {
     @Id
     @Column(name = "id", nullable = false)
